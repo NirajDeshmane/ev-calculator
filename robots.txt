@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://your-calculator-url.netlify.app/sitemap.xml 

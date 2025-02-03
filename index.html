@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO Meta Tags -->
+    <title>EV Cost Calculator India | Compare Electric vs Conventional Vehicle Costs</title>
+    <meta name="description" content="Calculate and compare costs between electric vehicles (EV) and conventional vehicles in India. Find out your potential savings with our free EV calculator.">
+    <meta name="keywords" content="EV calculator, electric vehicle cost, EV vs petrol cost, electric car calculator India, EV savings calculator, electric vehicle comparison">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="EV Cost Calculator India">
+    <meta property="og:description" content="Compare costs between electric and conventional vehicles. Calculate your potential savings with EVs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-calculator-url.netlify.app">
+    <meta property="og:image" content="path-to-your-preview-image.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EV Cost Calculator India">
+    <meta name="twitter:description" content="Compare costs between electric and conventional vehicles. Calculate your potential savings with EVs.">
+    <meta name="twitter:image" content="path-to-your-preview-image.jpg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Your Name">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://your-calculator-url.netlify.app">
+    
+    <!-- Existing CSS Links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- Schema.org Markup for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebApplication",
+        "name": "EV Cost Calculator India",
+        "description": "Calculate and compare costs between electric vehicles and conventional vehicles in India",
+        "url": "https://your-calculator-url.netlify.app",
+        "applicationCategory": "Calculator",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        }
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'YOUR_GA_ID');
+    </script>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="calculator-wrapper">
+            <h2 class="text-center mb-4">Should I shift to electric vehicle?</h2>
+            
+            <form id="calculatorForm">
+                <div class="row g-3">
+                    <!-- Vehicle Details -->
+                    <div class="col-md-6">
+                        <label for="vehicleSegment" class="form-label">Vehicle Segment</label>
+                        <select id="vehicleSegment" class="form-select" required>
+                            <option value="">Select</option>
+                            <option value="2">2 Wheeler</option>
+                            <option value="3">3 Wheeler</option>
+                            <option value="4">4 Wheeler</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="journeyDistance" class="form-label">Journey Distance</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="journeyDistance" required min="1">
+                            <span class="input-group-text">km</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="journeyFrequency" class="form-label">Journey Frequency</label>
+                        <select id="journeyFrequency" class="form-select" required>
+                            <option value="">Select</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="annualJourneyDistance" class="form-label">Annual Journey Distance</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="annualJourneyDistance" readonly>
+                            <span class="input-group-text">km</span>
+                        </div>
+                    </div>
+
+                    <!-- Battery Details -->
+                    <div class="col-md-6">
+                        <label for="batteryCapacity" class="form-label">Battery Capacity</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="batteryCapacity" required min="1">
+                            <span class="input-group-text">kWh</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="state" class="form-label">State</label>
+                        <select id="state" class="form-select" required>
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+
+                    <!-- Range and Tariff -->
+                    <div class="col-md-6">
+                        <label for="evRange" class="form-label">Electric vehicle Range</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="evRange" required min="1">
+                            <span class="input-group-text">km</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="domesticTariff" class="form-label">Domestic tariff</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="domesticTariff" required min="0" step="0.01">
+                            <span class="input-group-text">₹/kWh</span>
+                        </div>
+                    </div>
+
+                    <!-- Charging Details -->
+                    <div class="col-md-6">
+                        <label for="homeChargePercentage" class="form-label">Percentage of vehicle battery charged at home</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="homeChargePercentage" value="80" required min="0" max="100">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="publicChargePercentage" class="form-label">Percentage of vehicle battery charged at public place</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="publicChargePercentage" value="20" required min="0" max="100">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="publicChargingCost" class="form-label">Public Charging Cost</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="publicChargingCost" required min="0" step="0.01">
+                            <span class="input-group-text">₹</span>
+                        </div>
+                    </div>
+
+                    <!-- Conventional Vehicle Details -->
+                    <div class="col-md-6">
+                        <label for="comparingVehicle" class="form-label">Comparing Vehicle</label>
+                        <select id="comparingVehicle" class="form-select" required>
+                            <option value="">Select</option>
+                            <option value="petrol">Petrol</option>
+                            <option value="diesel" selected>Diesel</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="fuelPrice" class="form-label">Diesel price</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="fuelPrice" required min="0" step="0.01">
+                            <span class="input-group-text">₹/L</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="conventionalMileage" class="form-label">Conventional Vehicle average mileage</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="conventionalMileage" required min="1" step="0.1">
+                            <span class="input-group-text">km/L</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 mt-4">
+                    <button type="button" onclick="calculateCosts()" class="btn btn-primary btn-lg">Calculate Total Cost</button>
+                </div>
+            </form>
+
+            <div id="result" class="mt-4 d-none">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">How much will I save?</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="comparison-box ev-box">
+                                    <h6>Electric Vehicle</h6>
+                                    <div id="evCosts"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="comparison-box ice-box">
+                                    <h6>Conventional Vehicle</h6>
+                                    <div id="iceCosts"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="savings-summary mt-3" id="savingsSummary"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
